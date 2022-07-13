@@ -1,14 +1,11 @@
-import React, {useEffect, useState} from 'react';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
-
-// Import all the components we are going to use
+import React, {useState} from 'react';
+import {launchImageLibrary} from 'react-native-image-picker';
 import {
   SafeAreaView,
   StyleSheet,
   View,
   Text,
   TouchableOpacity,
-  Alert,
   TextInput,
   Image,
 } from 'react-native';
@@ -38,110 +35,43 @@ const AddCard = props => {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <View
-        style={{
-          backgroundColor: 'grey',
-          height: 200,
-          width: '80%',
-          borderRadius: 20,
-          padding: 20,
-          justifyContent: 'space-between',
-        }}>
-        <Text style={{fontSize: 14}}>{cardData?.cardNumber}</Text>
+      <View style={styles.card}>
+        <Text style={styles.numberNameText}>{cardData?.cardNumber}</Text>
         <Image
           source={{uri: `data:image/png;base64,${cardData?.logo}`}}
-          style={{
-            height: 60,
-            width: 60,
-            alignSelf: 'flex-end',
-          }}></Image>
-        <Text style={{fontSize: 14}}>{cardData?.userName}</Text>
+          style={styles.logo}
+        />
+        <Text style={styles.numberNameText}>{cardData?.userName}</Text>
       </View>
-      <View
-        style={{
-          padding: 30,
-          borderWidth: 1,
-          borderColor: 'grey',
-          marginTop: 40,
-          width: '90%',
-          height: '50%',
-          paddingBottom: 40,
-        }}>
-        <View style={{height: '35%'}}>
+      <View style={styles.formConatiner}>
+        <View style={styles.inputContainer}>
           <Text>Enter number</Text>
           <TextInput
             autoCapitalize="none"
             onChangeText={value => {
               setCardData({...cardData, cardNumber: value});
             }}
-            style={{
-              borderWidth: 1,
-              height: '50%',
-              width: '60%',
-              borderRadius: 8,
-              borderColor: '#948E8E',
-              fontSize: 12,
-              paddingHorizontal: 10,
-              marginTop: 5,
-            }}></TextInput>
+            style={styles.input}
+          />
         </View>
-        <View style={{height: '35%'}}>
+        <View style={styles.inputContainer}>
           <Text>Enter name</Text>
           <TextInput
             autoCapitalize="none"
             onChangeText={value => {
               setCardData({...cardData, userName: value});
             }}
-            style={{
-              borderWidth: 1,
-              height: '50%',
-              width: '60%',
-              borderRadius: 8,
-              borderColor: '#948E8E',
-              fontSize: 12,
-              paddingHorizontal: 10,
-              marginTop: 5,
-            }}></TextInput>
+            style={styles.input}
+          />
         </View>
-        {/* <View>
-          <Text>Enter Name</Text>
-          <TextInput
-            autoCapitalize="none"
-            onChangeText={value => {}}
-            style={{
-              borderWidth: 1,
-              height: '35%',
-              width: '60%',
-              borderRadius: 8,
-              borderColor: '#948E8E',
-              fontSize: 12,
-              paddingHorizontal: 10,
-              marginTop: 5,
-            }}></TextInput>
-        </View> */}
-        <TouchableOpacity
-          onPress={selectLogo}
-          style={{
-            height: 40,
-            width: '60%',
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: 'grey',
-          }}>
+        <TouchableOpacity onPress={selectLogo} style={styles.addLogoButton}>
           <Text>Add Logo</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
             props.navigation.navigate('editCard', cardData);
           }}
-          style={{
-            height: 40,
-            width: '60%',
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: 'grey',
-            marginTop: 20,
-          }}>
+          style={styles.nextButton}>
           <Text>Next</Text>
         </TouchableOpacity>
       </View>
@@ -157,5 +87,58 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     marginTop: 50,
+  },
+  card: {
+    backgroundColor: 'grey',
+    height: 200,
+    width: '80%',
+    borderRadius: 20,
+    padding: 20,
+    justifyContent: 'space-between',
+  },
+  logo: {
+    height: 60,
+    width: 60,
+    alignSelf: 'flex-end',
+  },
+  numberNameText: {
+    fontSize: 14,
+  },
+  formConatiner: {
+    padding: 30,
+    borderWidth: 1,
+    borderColor: 'grey',
+    marginTop: 40,
+    width: '90%',
+    height: '50%',
+    paddingBottom: 40,
+  },
+  inputContainer: {
+    height: '35%',
+  },
+  input: {
+    borderWidth: 1,
+    height: '50%',
+    width: '60%',
+    borderRadius: 8,
+    borderColor: '#948E8E',
+    fontSize: 12,
+    paddingHorizontal: 10,
+    marginTop: 5,
+  },
+  addLogoButton: {
+    height: 40,
+    width: '60%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'grey',
+  },
+  nextButton: {
+    height: 40,
+    width: '60%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'grey',
+    marginTop: 20,
   },
 });
