@@ -65,6 +65,7 @@ const AddCard = props => {
           marginTop: 40,
           width: '90%',
           height: '50%',
+          paddingBottom: 40,
         }}>
         <View style={{height: '35%'}}>
           <Text>Enter number</Text>
@@ -85,7 +86,7 @@ const AddCard = props => {
             }}></TextInput>
         </View>
         <View style={{height: '35%'}}>
-          <Text>Enter number</Text>
+          <Text>Enter name</Text>
           <TextInput
             autoCapitalize="none"
             onChangeText={value => {
