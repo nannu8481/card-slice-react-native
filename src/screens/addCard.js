@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {launchImageLibrary} from 'react-native-image-picker';
 import {
   SafeAreaView,
   StyleSheet,
@@ -9,72 +8,73 @@ import {
   TextInput,
   Image,
 } from 'react-native';
+import * as images from '../images/images';
 
 const AddCard = props => {
-  const [cardData, setCardData] = useState({
-    cardNumber: '',
-    logo: '',
-    userName: '',
-  });
-
-  const selectLogo = () => {
-    const options = {
-      mediaType: 'image',
-      maxWidth: 300,
-      maxHeight: 550,
-      quality: 1,
-      includeBase64: true,
-    };
-
-    launchImageLibrary(options, response => {
-      setCardData({
-        ...cardData,
-        logo: response?.assets && response?.assets[0]?.base64,
-      });
-    });
-  };
+  const [cards] = useState([
+    {
+      cardType: {
+        title: 'Aadhaar card',
+        color: 'rgb(32,21,75)',
+        position: 'center',
+      },
+      issuedOn: {
+        title: '22 may 2020',
+        color: 'rgb(32,21,75)',
+        position: 'left',
+      },
+      logo: {image: images.Logo, position: 'flex-end'},
+      createBy: {
+        title: 'IIT Bombay',
+        color: 'rgb(32,21,75)',
+        position: 'right',
+      },
+      cardBackground: 'rgb(226,241,254)',
+      aadhaarName: {title: 'john', color: 'rgb(32,21,75)', position: 'left'},
+      aadhaarNumber: {
+        title: '123456789',
+        color: 'rgb(32,21,75)',
+        position: 'left',
+      },
+    },
+  ]);
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.card}>
-        <Text style={styles.numberNameText}>{cardData?.cardNumber}</Text>
-        <Image
-          source={{uri: `data:image/png;base64,${cardData?.logo}`}}
-          style={styles.logo}
-        />
-        <Text style={styles.numberNameText}>{cardData?.userName}</Text>
-      </View>
-      <View style={styles.formConatiner}>
-        <View style={styles.inputContainer}>
-          <Text>Enter number</Text>
-          <TextInput
-            autoCapitalize="none"
-            onChangeText={value => {
-              setCardData({...cardData, cardNumber: value});
+      {cards?.map((itm, idx) => {
+        return (
+          <TouchableOpacity
+            key={idx}
+            onPress={() => {
+              props.navigation.navigate('editCard', itm);
             }}
-            style={styles.input}
-          />
-        </View>
-        <View style={styles.inputContainer}>
-          <Text>Enter name</Text>
-          <TextInput
-            autoCapitalize="none"
-            onChangeText={value => {
-              setCardData({...cardData, userName: value});
-            }}
-            style={styles.input}
-          />
-        </View>
-        <TouchableOpacity onPress={selectLogo} style={styles.addLogoButton}>
-          <Text>Add Logo</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            props.navigation.navigate('editCard', cardData);
-          }}
-          style={styles.nextButton}>
-          <Text>Next</Text>
-        </TouchableOpacity>
-      </View>
+            style={[styles.card, {backgroundColor: itm?.cardBackground}]}>
+            <View
+              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+              <Text style={[styles.numberNameText, {fontSize: 20}]}>
+                {itm?.cardType?.title}
+              </Text>
+              <Image source={itm?.logo.image} style={styles.logo} />
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                width: '100%',
+              }}>
+              <View>
+                <Text style={[styles.numberNameText, {fontSize: 12}]}>
+                  Issued on
+                </Text>
+                <Text style={styles.numberNameText}>
+                  {itm?.issuedOn?.title}
+                </Text>
+              </View>
+              <Text style={styles.numberNameText}>{itm?.createBy?.title}</Text>
+            </View>
+          </TouchableOpacity>
+        );
+      })}
     </SafeAreaView>
   );
 };
@@ -87,6 +87,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     marginTop: 50,
+    justifyContent: 'center',
   },
   card: {
     backgroundColor: 'grey',
@@ -95,6 +96,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 20,
     justifyContent: 'space-between',
+    borderWidth: 5,
+    borderColor: 'rgb(0,70,145)',
   },
   logo: {
     height: 60,
@@ -103,6 +106,8 @@ const styles = StyleSheet.create({
   },
   numberNameText: {
     fontSize: 14,
+    fontWeight: 'bold',
+    color: 'rgb(32,21,75)',
   },
   formConatiner: {
     padding: 30,
