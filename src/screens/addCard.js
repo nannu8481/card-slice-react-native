@@ -13,23 +13,23 @@ import * as images from '../images/images';
 const AddCard = props => {
   const [cards] = useState([
     {
+      cardBackground: 'rgb(226,241,254)',
       cardType: {
         title: 'Aadhaar card',
         color: 'rgb(32,21,75)',
         position: 'center',
       },
       issuedOn: {
-        title: '22 may 2020',
+        title: '26 july 2022',
         color: 'rgb(32,21,75)',
         position: 'left',
       },
       logo: {image: images.Logo, position: 'flex-end'},
       createBy: {
-        title: 'IIT Bombay',
+        title: 'Digiloker',
         color: 'rgb(32,21,75)',
         position: 'right',
       },
-      cardBackground: 'rgb(226,241,254)',
       aadhaarName: {title: 'john', color: 'rgb(32,21,75)', position: 'left'},
       aadhaarNumber: {
         title: '123456789',
