@@ -5,76 +5,171 @@ import {
   View,
   Text,
   TouchableOpacity,
-  TextInput,
   Image,
+  ScrollView,
 } from 'react-native';
-import * as images from '../images/images';
+import {data, userInfo} from '../constants/schema';
 
 const AddCard = props => {
-  const [cards] = useState([
-    {
-      cardBackground: 'rgb(226,241,254)',
-      cardType: {
-        title: 'Aadhaar card',
-        color: 'rgb(32,21,75)',
-        position: 'center',
-      },
-      issuedOn: {
-        title: '26 july 2022',
-        color: 'rgb(32,21,75)',
-        position: 'left',
-      },
-      logo: {image: images.Logo, position: 'flex-end'},
-      createBy: {
-        title: 'Digiloker',
-        color: 'rgb(32,21,75)',
-        position: 'right',
-      },
-      aadhaarName: {title: 'john', color: 'rgb(32,21,75)', position: 'left'},
-      aadhaarNumber: {
-        title: '123456789',
-        color: 'rgb(32,21,75)',
-        position: 'left',
-      },
-    },
-  ]);
+  const [cards] = useState(data);
   return (
     <SafeAreaView style={styles.container}>
-      {cards?.map((itm, idx) => {
-        return (
-          <TouchableOpacity
-            key={idx}
-            onPress={() => {
-              props.navigation.navigate('editCard', itm);
-            }}
-            style={[styles.card, {backgroundColor: itm?.cardBackground}]}>
-            <View
-              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-              <Text style={[styles.numberNameText, {fontSize: 20}]}>
-                {itm?.cardType?.title}
-              </Text>
-              <Image source={itm?.logo.image} style={styles.logo} />
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                width: '100%',
-              }}>
-              <View>
-                <Text style={[styles.numberNameText, {fontSize: 12}]}>
-                  Issued on
-                </Text>
-                <Text style={styles.numberNameText}>
-                  {itm?.issuedOn?.title}
-                </Text>
+      <ScrollView contentContainerStyle={{alignItems: 'center'}}>
+        {cards?.map((itm, idx) => {
+          return (
+            <TouchableOpacity
+              key={idx}
+              style={[
+                styles.card,
+                {backgroundColor: itm?.displayModel?.cardInformation?.solid},
+              ]}>
+              <View style={{paddingHorizontal: 10, paddingTop: 10}}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                  }}>
+                  <Image
+                    source={userInfo[0]?.displayInformation?.cardLogo}
+                    style={{
+                      height:
+                        itm?.displayModel?.headStyleInformation?.logos?.left
+                          ?.size?.height,
+                      width:
+                        itm?.displayModel?.headStyleInformation?.logos?.left
+                          ?.size?.width,
+                    }}
+                  />
+                  <Text
+                    style={{
+                      fontSize: itm?.displayModel?.fontInformation?.size,
+                      color: itm?.displayModel?.fontInformation?.color,
+                    }}>
+                    {userInfo[0]?.displayInformation?.mainHeading}
+                  </Text>
+                  <Image
+                    source={userInfo[0]?.displayInformation?.issuedByLogo}
+                    style={{
+                      height:
+                        itm?.displayModel?.headStyleInformation?.logos?.right
+                          ?.size?.height,
+                      width:
+                        itm?.displayModel?.headStyleInformation?.logos?.right
+                          ?.size?.width,
+                    }}
+                  />
+                </View>
+                <View
+                  style={{
+                    width: '100%',
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    marginTop: 10,
+                    justifyContent: 'space-between',
+                  }}>
+                  {itm?.displayModel?.bodyStyleInformation?.placement?.left ==
+                  'image' ? (
+                    <Image
+                      source={userInfo[0]?.displayInformation?.userImage}
+                      style={{
+                        height:
+                          itm?.displayModel?.bodyStyleInformation.image.size
+                            .height,
+                        width:
+                          itm?.displayModel?.bodyStyleInformation.image.size
+                            .width,
+                      }}
+                    />
+                  ) : // <View
+                  //   style={{
+                  //     height: 80,
+                  //     width: 60,
+                  //     backgroundColor: 'green',
+                  //   }}></View>
+                  null}
+                  {itm?.displayModel?.bodyStyleInformation?.logo?.show ? (
+                    <View
+                      style={{
+                        height: 40,
+                        width: 40,
+                        backgroundColor: 'blue',
+                      }}></View>
+                  ) : null}
+                  <View style={{marginLeft: 20}}>
+                    <Text
+                      style={{
+                        marginTop:
+                          itm?.displayModel?.bodyStyleInformation?.content?.name
+                            .margin,
+                      }}>
+                      {
+                        itm?.displayModel?.bodyStyleInformation?.content?.name
+                          ?.name
+                      }
+                    </Text>
+                    {itm?.displayModel?.bodyStyleInformation?.content
+                      ?.subIdNumber?.number ? (
+                      <Text style={{marginTop: 7}}>
+                        {
+                          itm?.displayModel?.bodyStyleInformation?.content
+                            ?.subIdNumber?.number
+                        }
+                      </Text>
+                    ) : null}
+                    <Text
+                      style={{
+                        marginTop: 7,
+                      }}>{`Issue date: ${itm?.displayModel?.bodyStyleInformation?.content?.date?.date}`}</Text>
+                  </View>
+                  {itm?.type == 'Aadhaar' ? (
+                    <View style={{height: 80, width: 60}}></View>
+                  ) : null}
+                  {itm?.displayModel?.bodyStyleInformation?.placement?.left !=
+                  'image' ? (
+                    <View
+                      style={{
+                        height: 80,
+                        width: 60,
+                        backgroundColor: 'green',
+                      }}></View>
+                  ) : null}
+                </View>
               </View>
-              <Text style={styles.numberNameText}>{itm?.createBy?.title}</Text>
-            </View>
-          </TouchableOpacity>
-        );
-      })}
+              {itm?.displayModel?.bodyStyleInformation?.content?.idNumber
+                ?.number ? (
+                <Text style={{textAlign: 'center', marginTop: 20}}>
+                  {
+                    itm?.displayModel?.bodyStyleInformation?.content?.idNumber
+                      ?.number
+                  }
+                </Text>
+              ) : null}
+              {itm?.displayModel?.footerStyleInformation?.footerBorder?.show ? (
+                <View
+                  style={{
+                    height: 1,
+                    backgroundColor: 'red',
+                    width: '95%',
+                    margin: 10,
+                  }}></View>
+              ) : null}
+              <View
+                style={{
+                  alignSelf: 'center',
+                  height: 30,
+                  width: '60%',
+                  borderRadius: 20,
+                  borderWidth: 1,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginBottom: 20,
+                }}>
+                <Text style={{fontSize: 15}}>Verified by digilocker</Text>
+              </View>
+            </TouchableOpacity>
+          );
+        })}
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -84,24 +179,23 @@ export default AddCard;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    backgroundColor: 'black',
+    // alignItems: 'center',
     marginTop: 50,
-    justifyContent: 'center',
+    // justifyContent: 'center',
   },
   card: {
     backgroundColor: 'grey',
-    height: 200,
-    width: '80%',
-    borderRadius: 20,
-    padding: 20,
+    height: 240,
+    width: '90%',
+    borderRadius: 15,
+    // padding: 20,
     justifyContent: 'space-between',
-    borderWidth: 5,
-    borderColor: 'rgb(0,70,145)',
+    marginTop: 20,
   },
   logo: {
-    height: 60,
-    width: 60,
+    height: 40,
+    width: 40,
     alignSelf: 'flex-end',
   },
   numberNameText: {

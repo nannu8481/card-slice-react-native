@@ -15,7 +15,6 @@
     "react": "17.0.2",
     "react-native": "0.66.4",
     "react-native-barcode-mask": "^1.2.4",
-    "react-native-camera": "^4.2.1",
     "react-native-color-picker": "^0.6.0",
     "react-native-image-picker": "^4.8.4",
     "react-native-reanimated": "^2.8.0",
@@ -23,8 +22,7 @@
     "react-native-scan-barcode": "^3.1.7",
     "react-native-screens": "^3.15.0",
     "react-native-select-dropdown": "^2.0.4",
-    "react-native-vision-camera": "^2.13.3",
-    "vision-camera-code-scanner": "^0.2.0"
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
