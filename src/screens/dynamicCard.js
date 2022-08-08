@@ -61,21 +61,17 @@ const DynamicCard = props => {
                       styles={bodyStyle.image}
                       source={userInfo[0]?.displayInformation?.userImage}
                     />
-                    {bodyStyle.content.show && (
-                      <UserTextWrapper>
-                        <UserName styles={bodyStyle.content.name}>
-                          {userInfo[0]?.displayInformation?.userName}
-                        </UserName>
-                        {bodyStyle?.content.idNumber.show && (
-                          <UserId styles={bodyStyle.content.idNumber}>
-                            {userInfo[0]?.displayInformation?.idNumber}
-                          </UserId>
-                        )}
-                        <IssueDate styles={bodyStyle.content.date}>
-                          {userInfo[0]?.displayInformation?.issueDate}
-                        </IssueDate>
-                      </UserTextWrapper>
-                    )}
+                    <UserTextWrapper styles={bodyStyle.content.show}>
+                      <UserName styles={bodyStyle.content.name}>
+                        {userInfo[0]?.displayInformation?.userName}
+                      </UserName>
+                      <UserId styles={bodyStyle.content.idNumber}>
+                        {userInfo[0]?.displayInformation?.idNumber}
+                      </UserId>
+                      <IssueDate styles={bodyStyle.content.date}>
+                        {userInfo[0]?.displayInformation?.issueDate}
+                      </IssueDate>
+                    </UserTextWrapper>
                     <UserLogo
                       source={userInfo[0]?.displayInformation?.subLogo}
                       styles={bodyStyle.logo}

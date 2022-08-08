@@ -54,8 +54,8 @@ const data = [
       bodyStyleInformation: {
         placement: {
           left: 'image',
-          right: 'content',
-          center: '',
+          center: 'content',
+          right: '',
         },
         content: {
           show: true,

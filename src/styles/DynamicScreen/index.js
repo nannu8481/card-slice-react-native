@@ -56,6 +56,7 @@ const BodyWrapper = styled.View`
 const UserTextWrapper = styled.View`
   text-align: left;
   width: 60%;
+  display: ${props => (props?.styles ? 'flex' : 'none')};
 `;
 
 const UserImage = styled.Image`
@@ -80,6 +81,7 @@ const UserId = styled.Text`
   color: ${props => props?.styles?.color};
   font-weight: ${props => props?.styles?.fontWeight};
   margin-top: ${props => props?.styles?.marginTop};
+  display: ${props => (props?.styles?.show ? 'flex' : 'none')};
 `;
 const IssueDate = styled.Text`
   font-size: ${props => props?.styles?.fontSize};
