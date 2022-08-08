@@ -4,6 +4,17 @@ const Wrapper = styled.View`
   padding: 18px 15px;
 `;
 
+const MainWrapper = styled.View`
+  /* flex: 1; */
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 90%;
+  height: 240;
+  border-radius: 20px;
+  justify-content: space-between;
+  margin-top: 20;
+`;
+
 const HeadWrapper = styled.View`
   flex-direction: row;
   justify-content: space-between;
@@ -49,9 +60,10 @@ const UserTextWrapper = styled.View`
 
 const UserImage = styled.Image`
   width: 100%;
-  max-width: ${props => props?.styles?.width};
-  height: ${props => props?.styles?.height};
+  max-width: ${props => (props?.styles?.show ? props?.styles?.size?.width : 0)};
+  height: ${props => (props?.styles?.show ? props?.styles?.size?.height : 0)};
 `;
+
 const UserLogo = styled.Image`
   width: 100%;
   max-width: ${props => (props?.styles?.show ? props?.styles?.size?.width : 0)};
@@ -80,11 +92,12 @@ const SubNumberText = styled.Text`
   font-size: ${props => props?.styles?.fontSize};
   color: ${props => props?.styles?.color};
   font-weight: ${props => props?.styles?.fontWeight};
+  display: ${props => (props?.styles?.show ? 'flex' : 'none')};
 `;
 
 const FooterWrapper = styled.View`
   padding: 13px;
-  width: 100%;
+  width: 370px;
   align-items: center;
   border-top-color: ${props =>
     props?.styles?.show ? props?.styles?.color : ''};
@@ -119,4 +132,5 @@ export {
   UserLogo,
   SubNumberText,
   VerifyButton,
+  MainWrapper,
 };

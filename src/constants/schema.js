@@ -91,7 +91,7 @@ const data = [
           },
         },
         image: {
-          show: 'true',
+          show: true,
           size: {
             width: 52,
             height: 64,
