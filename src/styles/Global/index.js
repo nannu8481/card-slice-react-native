@@ -14,4 +14,12 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 20,
   },
+  linearGradient: {
+    width: '100%',
+    maxWidth: '90%',
+    height: 240,
+    borderRadius: 20,
+    justifyContent: 'space-between',
+    marginTop: 20,
+  },
 });

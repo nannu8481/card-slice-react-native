@@ -2,7 +2,6 @@ import * as images from '../images/images';
 
 const data = [
   {
-    type: 'Aadhaar',
     version: 'V1',
     displayModel: {
       fontInformation: {
@@ -11,11 +10,11 @@ const data = [
         // fontFamily: ""
       },
       cardInformation: {
-        backgroundColor: 'solid',
+        backgroundColor: 'solid', // gradient, solid, transparent
         gradient: {
           direction: '',
-          firstColor: '',
-          secondColor: '',
+          firstColor: '#F3BDDC',
+          secondColor: '#76CCFE',
         },
         solid: '#ffffff',
       },
@@ -53,9 +52,9 @@ const data = [
       },
       bodyStyleInformation: {
         placement: {
-          left: 'image',
-          center: 'content',
-          right: '',
+          left: 'content',
+          center: '',
+          right: 'image',
         },
         content: {
           show: true,
@@ -87,7 +86,7 @@ const data = [
             color: '#312B5C',
             textAlign: 'center',
             font: null,
-            show: true,
+            show: false,
           },
         },
         image: {
@@ -117,10 +116,27 @@ const data = [
           color: '#312B5C',
           fontWeight: 400,
           border: '1px solid #565870',
-          position: 'center',
+          position: 'center', // center, flex-start, flex-end
           padding: '3px',
           color: '#000000',
         },
+      },
+    },
+    userInfo: {
+      type: 'Aadhaar',
+      version: 'V1',
+      displayInformation: {
+        cardLogo: images?.Logo,
+        issuedByLogo: images?.AsliLogo,
+        mainHeading: 'PAN CARD',
+        subHeading: 'GOVERNMENT OF INDIA',
+        userImage: images?.UserImage,
+        userName: 'Rishin V Thomas',
+        issueDate: '24/07/2020',
+        idNumber: '123142131231',
+        subIdNumber: 'GHJGJHYTPK098',
+        subLogo: images?.SubLogo,
+        verifiedBy: 'Verified by DigiLocker',
       },
     },
   },
@@ -133,7 +149,7 @@ const userInfo = [
     displayInformation: {
       cardLogo: images?.Logo,
       issuedByLogo: images?.AsliLogo,
-      mainHeading: 'AADHAAR CARD',
+      mainHeading: 'PAN CARD',
       subHeading: 'GOVERNMENT OF INDIA',
       userImage: images?.UserImage,
       userName: 'Rishin V Thomas',
@@ -141,7 +157,7 @@ const userInfo = [
       idNumber: '123142131231',
       subIdNumber: 'GHJGJHYTPK098',
       subLogo: images?.SubLogo,
-      verifiedBy: 'Verified by DigiLocker',
+      verifiedBy: 'Verified With DigiLocker',
     },
   },
 ];

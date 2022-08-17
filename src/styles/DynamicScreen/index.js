@@ -6,13 +6,13 @@ const Wrapper = styled.View`
 
 const MainWrapper = styled.View`
   /* flex: 1; */
-  background-color: #ffffff;
-  width: 100%;
+  /* background-color: #ffffff; */
+  /* width: 100%;
   max-width: 90%;
   height: 240;
   border-radius: 20px;
   justify-content: space-between;
-  margin-top: 20;
+  margin-top: 20; */
 `;
 
 const HeadWrapper = styled.View`
@@ -59,14 +59,20 @@ const UserTextWrapper = styled.View`
   display: ${props => (props?.styles ? 'flex' : 'none')};
 `;
 
-const UserImage = styled.Image`
+const UserImageSection = styled.View`
   width: 100%;
+`;
+
+const UserImage = styled.Image`
   max-width: ${props => (props?.styles?.show ? props?.styles?.size?.width : 0)};
   height: ${props => (props?.styles?.show ? props?.styles?.size?.height : 0)};
 `;
 
-const UserLogo = styled.Image`
+const LogoSection = styled.View`
   width: 100%;
+`;
+
+const UserLogo = styled.Image`
   max-width: ${props => (props?.styles?.show ? props?.styles?.size?.width : 0)};
   height: ${props => (props?.styles?.show ? props?.styles?.size?.height : 0)};
 `;
@@ -99,11 +105,14 @@ const SubNumberText = styled.Text`
 
 const FooterWrapper = styled.View`
   padding: 13px;
-  width: 370px;
-  align-items: center;
+  width: 100%;
+  align-items: ${props => props?.styles?.waterMark?.position};
   border-top-color: ${props =>
-    props?.styles?.show ? props?.styles?.color : ''};
-  border-top-width: ${props => (props?.styles?.show ? props?.styles?.size : 0)};
+    props?.styles?.footerBorder?.show
+      ? props?.styles?.footerBorder?.color
+      : ''};
+  border-top-width: ${props =>
+    props?.styles?.footerBorder?.show ? props?.styles?.footerBorder?.size : 0};
 `;
 
 const VerifyButton = styled.Text`
@@ -112,6 +121,7 @@ const VerifyButton = styled.Text`
   font-weight: ${props => props?.styles?.fontWeight};
   border: ${props => props?.styles?.border};
   text-align: center;
+  width: 180px;
   border-radius: 30px;
   padding: 6px 28px;
 `;
@@ -135,4 +145,6 @@ export {
   SubNumberText,
   VerifyButton,
   MainWrapper,
+  UserImageSection,
+  LogoSection,
 };
