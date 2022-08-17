@@ -151,7 +151,7 @@ const DynamicCard = props => {
                   </Wrapper>
                   <FooterWrapper styles={footerStyle}>
                     <VerifyButton styles={footerStyle.waterMark}>
-                      {userInfo[0]?.displayInformation?.verifiedBy}
+                      {userInfo[0]?.displayInformation?.issuer}
                     </VerifyButton>
                   </FooterWrapper>
                 </MainWrapper>

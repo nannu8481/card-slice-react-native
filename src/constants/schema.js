@@ -3,12 +3,8 @@ import * as images from '../images/images';
 const data = [
   {
     version: 'V1',
+    schema: 'Secondary School Examination',
     displayModel: {
-      fontInformation: {
-        size: 14,
-        color: 'blue',
-        // fontFamily: ""
-      },
       cardInformation: {
         backgroundColor: 'solid', // gradient, solid, transparent
         gradient: {
@@ -54,7 +50,7 @@ const data = [
         placement: {
           left: 'content',
           center: '',
-          right: 'image',
+          right: '',
         },
         content: {
           show: true,
@@ -71,7 +67,7 @@ const data = [
             fontWeight: 500,
             marginTop: 6,
             font: null,
-            show: false,
+            show: true,
           },
           date: {
             fontSize: 12,
@@ -107,7 +103,7 @@ const data = [
       footerStyleInformation: {
         footerBorder: {
           position: 'top',
-          show: true,
+          show: false,
           color: '#D50C29',
           size: 1,
         },
@@ -116,27 +112,29 @@ const data = [
           color: '#312B5C',
           fontWeight: 400,
           border: '1px solid #565870',
-          position: 'center', // center, flex-start, flex-end
+          position: 'flex-start', // center, flex-start, flex-end
           padding: '3px',
           color: '#000000',
         },
       },
     },
     userInfo: {
-      type: 'Aadhaar',
+      type: 'Secondary School Examination',
       version: 'V1',
       displayInformation: {
         cardLogo: images?.Logo,
         issuedByLogo: images?.AsliLogo,
-        mainHeading: 'PAN CARD',
-        subHeading: 'GOVERNMENT OF INDIA',
+        mainHeading: 'SECONDARY SCHOOL EXAMINATION',
+        subHeading: '',
         userImage: images?.UserImage,
         userName: 'Rishin V Thomas',
         issueDate: '24/07/2020',
+        dateOfBirth: '',
+        dateOfValidity: '24/07/2033',
         idNumber: '123142131231',
-        subIdNumber: 'GHJGJHYTPK098',
+        subIdNumber: '',
         subLogo: images?.SubLogo,
-        verifiedBy: 'Verified by DigiLocker',
+        issuer: 'Verified by DigiLocker',
       },
     },
   },
@@ -144,20 +142,22 @@ const data = [
 
 const userInfo = [
   {
-    type: 'Aadhaar',
+    type: 'Secondary School Examination',
     version: 'V1',
     displayInformation: {
       cardLogo: images?.Logo,
       issuedByLogo: images?.AsliLogo,
-      mainHeading: 'PAN CARD',
-      subHeading: 'GOVERNMENT OF INDIA',
+      mainHeading: 'SECONDARY SCHOOL EXAMINATION',
+      subHeading: '',
       userImage: images?.UserImage,
       userName: 'Rishin V Thomas',
       issueDate: '24/07/2020',
+      dateOfBirth: '',
+      dateOfValidity: '24/07/2033',
       idNumber: '123142131231',
-      subIdNumber: 'GHJGJHYTPK098',
+      subIdNumber: '',
       subLogo: images?.SubLogo,
-      verifiedBy: 'Verified With DigiLocker',
+      issuer: 'Verified by DigiLocker',
     },
   },
 ];
