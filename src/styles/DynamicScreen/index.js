@@ -66,6 +66,7 @@ const UserImageSection = styled.View`
 const UserImage = styled.Image`
   max-width: ${props => (props?.styles?.show ? props?.styles?.size?.width : 0)};
   height: ${props => (props?.styles?.show ? props?.styles?.size?.height : 0)};
+  object-fit: contain;
 `;
 
 const LogoSection = styled.View`

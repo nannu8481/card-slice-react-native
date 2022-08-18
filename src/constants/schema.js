@@ -3,7 +3,7 @@ import * as images from '../images/images';
 const data = [
   {
     version: 'V1',
-    schema: 'Secondary School Examination',
+    schema: 'DRIVING LICENSE',
     displayModel: {
       cardInformation: {
         backgroundColor: 'solid', // gradient, solid, transparent
@@ -48,9 +48,9 @@ const data = [
       },
       bodyStyleInformation: {
         placement: {
-          left: 'content',
+          left: 'image',
           center: '',
-          right: '',
+          right: 'content',
         },
         content: {
           show: true,
@@ -92,13 +92,6 @@ const data = [
             height: 64,
           },
         },
-        logo: {
-          show: false,
-          size: {
-            width: 40,
-            height: 33,
-          },
-        },
       },
       footerStyleInformation: {
         footerBorder: {
@@ -119,22 +112,22 @@ const data = [
       },
     },
     userInfo: {
-      type: 'Secondary School Examination',
+      type: 'DRIVING LICENSE',
       version: 'V1',
       displayInformation: {
         cardLogo: images?.Logo,
         issuedByLogo: images?.AsliLogo,
-        mainHeading: 'SECONDARY SCHOOL EXAMINATION',
+        mainHeading: 'DRIVING LICENSE',
         subHeading: '',
-        userImage: images?.UserImage,
+        image: images?.SubLogo,
         userName: 'Rishin V Thomas',
-        issueDate: '24/07/2020',
+        issueDate: '',
         dateOfBirth: '',
-        dateOfValidity: '24/07/2033',
+        dateOfValidity: '',
+        examinationYear: '2020',
         idNumber: '123142131231',
         subIdNumber: '',
-        subLogo: images?.SubLogo,
-        issuer: 'Verified by DigiLocker',
+        issuer: 'Verified by IDfy',
       },
     },
   },
@@ -142,22 +135,21 @@ const data = [
 
 const userInfo = [
   {
-    type: 'Secondary School Examination',
+    type: 'DRIVING LICENSE',
     version: 'V1',
     displayInformation: {
       cardLogo: images?.Logo,
       issuedByLogo: images?.AsliLogo,
-      mainHeading: 'SECONDARY SCHOOL EXAMINATION',
+      mainHeading: 'DRIVING LICENSE',
       subHeading: '',
-      userImage: images?.UserImage,
+      image: images?.SubLogo,
       userName: 'Rishin V Thomas',
       issueDate: '24/07/2020',
       dateOfBirth: '',
       dateOfValidity: '24/07/2033',
       idNumber: '123142131231',
       subIdNumber: '',
-      subLogo: images?.SubLogo,
-      issuer: 'Verified by DigiLocker',
+      issuer: 'Verified by IDfy',
     },
   },
 ];

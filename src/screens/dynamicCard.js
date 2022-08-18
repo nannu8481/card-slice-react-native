@@ -36,49 +36,60 @@ import {
 const DynamicCard = props => {
   const [cards] = useState(data);
 
-  const getImage = bodyStyle => {
+  const getImage = (bodyStyle, userInfo) => {
     return (
       <UserImageSection>
-        <UserImage
-          styles={bodyStyle.image}
-          source={userInfo[0]?.displayInformation?.userImage}
-        />
+        <UserImage styles={bodyStyle.image} source={userInfo?.image} />
       </UserImageSection>
     );
   };
 
-  const getLogo = bodyStyle => {
-    return (
-      <LogoSection>
-        <UserLogo
-          source={userInfo[0]?.displayInformation?.subLogo}
-          styles={bodyStyle.logo}
-        />
-      </LogoSection>
-    );
-  };
+  // const getLogo = (bodyStyle, userInfo) => {
+  //   return (
+  //     <LogoSection>
+  //       {/* <UserLogo source={userInfo.image} styles={bodyStyle.image} /> */}
+  //     </LogoSection>
+  //   );
+  // };
 
-  const getContent = bodyStyle => {
+  const getContent = (bodyStyle, userInfo) => {
     return (
       <UserTextWrapper styles={bodyStyle.content.show}>
         <UserName styles={bodyStyle.content.name}>
-          {userInfo[0]?.displayInformation?.userName}
+          {userInfo?.userName}
         </UserName>
         <UserId styles={bodyStyle.content.idNumber}>
-          {userInfo[0]?.displayInformation?.idNumber}
+          {userInfo?.idNumber}
         </UserId>
-        <IssueDate styles={bodyStyle.content.date}>
-          Issue Date: {userInfo[0]?.displayInformation?.issueDate}
-        </IssueDate>
+        {userInfo?.issueDate ? (
+          <IssueDate styles={bodyStyle.content.date}>
+            Issued Date: {userInfo?.issueDate}
+          </IssueDate>
+        ) : null}
+        {userInfo?.dateOfBirth ? (
+          <IssueDate styles={bodyStyle.content.date}>
+            Date of birth: {userInfo?.dateOfBirth}
+          </IssueDate>
+        ) : null}
+        {userInfo?.dateOfValidity ? (
+          <IssueDate styles={bodyStyle.content.date}>
+            Date of validity: {userInfo?.dateOfValidity}
+          </IssueDate>
+        ) : null}
+        {userInfo?.examinationYear ? (
+          <IssueDate styles={bodyStyle.content.date}>
+            Examination Year: {userInfo?.examinationYear}
+          </IssueDate>
+        ) : null}
       </UserTextWrapper>
     );
   };
 
-  const bodyRenderingComponent = (position, bodyStyle) => {
+  const bodyRenderingComponent = (position, bodyStyle, userInfo) => {
     const allComponents = {
-      content: getContent(bodyStyle),
-      logo: getLogo(bodyStyle),
-      image: getImage(bodyStyle),
+      content: getContent(bodyStyle, userInfo),
+      // logo: getLogo(bodyStyle, userInfo),
+      image: getImage(bodyStyle, userInfo),
     };
 
     return (
@@ -117,21 +128,21 @@ const DynamicCard = props => {
                     <HeadWrapper>
                       <CardLogo
                         styles={headerStyle?.logos?.left?.size}
-                        source={userInfo[0]?.displayInformation?.cardLogo}
+                        source={itm?.userInfo?.displayInformation.cardLogo}
                       />
                       <HeadingWrapper>
                         <MainTitle styles={headerStyle.title.mainHeading}>
-                          {userInfo[0]?.displayInformation?.mainHeading}
+                          {itm?.userInfo?.displayInformation.mainHeading}
                         </MainTitle>
                         {headerStyle?.title?.subHeading?.show && (
                           <SubTitle styles={headerStyle.title.subHeading}>
-                            {userInfo[0]?.displayInformation?.subHeading}
+                            {itm?.userInfo?.displayInformation.subHeading}
                           </SubTitle>
                         )}
                       </HeadingWrapper>
                       <IssuerLogo
                         styles={headerStyle?.logos?.right?.size}
-                        source={userInfo[0]?.displayInformation?.issuedByLogo}
+                        source={itm?.userInfo?.displayInformation.issuedByLogo}
                       />
                     </HeadWrapper>
 
@@ -143,15 +154,16 @@ const DynamicCard = props => {
                           center: bodyStyle.placement.center,
                         },
                         bodyStyle,
+                        itm?.userInfo?.displayInformation,
                       )}
                     </BodyWrapper>
                     <SubNumberText styles={bodyStyle.content.subIdNumber}>
-                      {userInfo[0]?.displayInformation?.subIdNumber}
+                      {itm?.userInfo?.displayInformation.subIdNumber}
                     </SubNumberText>
                   </Wrapper>
                   <FooterWrapper styles={footerStyle}>
                     <VerifyButton styles={footerStyle.waterMark}>
-                      {userInfo[0]?.displayInformation?.issuer}
+                      {itm?.userInfo?.displayInformation.issuer}
                     </VerifyButton>
                   </FooterWrapper>
                 </MainWrapper>
